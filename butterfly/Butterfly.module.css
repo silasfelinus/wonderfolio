@@ -3,6 +3,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
+    animation: riseAndFall 0.8s infinite;
 }
 
 .body {
@@ -11,11 +12,10 @@
     left: 45px;
     width: 10px;
     height: 45px;
-    background-color: #8B4513;
+    background-color: #0f0f0e;
     transform: rotate(60deg);
     transform-origin: bottom center;
     border-radius: 50% 50% 6px 6px;
-    background: linear-gradient(150deg, #A0522D, #8B4513 60%, #A0522D);
 }
 
 .head {
@@ -65,8 +65,9 @@
     background-color: #444;
     background: radial-gradient(circle, #666, #333 60%, #111);
 }
-.left-wing,
-.right-wing {
+
+.leftWing,
+.rightWing {
     width: 44px;
     height: 42px;
     position: absolute;
@@ -89,48 +90,55 @@
 
 /* Bottom Wing Styling */
 .bottom {
-    top: 20px;  /* Positioned below the top wing */
+    top: 40px;  /* Positioned below the top wing */
     width: 30px;
     height: 30px;
 }
 
 /* Animations remain the same */
 
-.left-wing {
-    left: 10px;
-    transform-origin: 24px 50%;
-    transform: rotate3d(1, 0, 0, 20deg); /* Vertical flap */
+.leftWing {
+    top: 0px;       /* Align the top with the right wing */
+    left: -46px;   /* Shift it to the left to make space */
+    transform-origin: 100% 50%; /* Rotate around the rightmost edge */
     animation: flutter-left 0.8s infinite;
+
+}
+.rightWing {
+    top: 0px;
+    left: -30px; /* Adjusted this */
+    transform-origin: 100% 50%; /* Adjusted this to rotate from the other side */
+    transform: scaleX(-1) rotate3d(1, 0, 0, -20deg);
+    animation: flutter-right 0.8s infinite;
 }
 
-.right-wing {
-    left: 14px;
-    transform-origin: 0px 50%;
-    transform: rotate3d(1, 0, 0, -20deg); /* Vertical flap */
-    animation: flutter-right 0.6s infinite;
+.leftWing, .rightWing, .butterfly {
+    animation-timing-function: linear;
 }
 
 @keyframes flutter-left {
-    0% {
-        transform: rotate3d(1, 0, 0, 20deg);
+    0%, 100% {
+        transform: rotate3d(0, 1, 0, -20deg) scale(1.03); /* Increased scale when wings are close */
     }
     50% {
-        transform: rotate3d(1, 0, 0, 70deg);
-    }
-    100% {
-        transform: rotate3d(1, 0, 0, 20deg);
-    }
-}
-  
-@keyframes flutter-right {
-    0% {
-        transform: rotate3d(1, 0, 0, -20deg);
-    }
-    50% {
-        transform: rotate3d(1, 0, 0, -70deg);
-    }
-    100% {
-        transform: rotate3d(1, 0, 0, -20deg);
+        transform: rotate3d(0, 1, 0, -70deg) scale(0.97); /* Reduced scale when wings are open */
     }
 }
 
+@keyframes flutter-right {
+    0%, 100% {
+        transform: scaleX(-1) rotate3d(0, 1, 0, 20deg) scale(1.03);
+    }
+    50% {
+        transform: scaleX(-1) rotate3d(0, 1, 0, 70deg) scale(0.97);
+    }
+}
+
+@keyframes riseAndFall {
+    0%, 100% {
+        transform: scale(0.95); /* Start and end smaller as wings are extended */
+    }
+    50% {
+        transform: scale(1.0); /* Peak size when wings are folded in */
+    }
+}
