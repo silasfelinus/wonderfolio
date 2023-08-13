@@ -1,0 +1,136 @@
+.butterfly {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.body {
+    position: absolute;
+    bottom: 15px;
+    left: 45px;
+    width: 10px;
+    height: 45px;
+    background-color: #8B4513;
+    transform: rotate(60deg);
+    transform-origin: bottom center;
+    border-radius: 50% 50% 6px 6px;
+    background: linear-gradient(150deg, #A0522D, #8B4513 60%, #A0522D);
+}
+
+.head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    transform-origin: 50% 100%;
+    background: radial-gradient(circle, #555, #333 60%, #111);
+}
+
+.antenna {
+    position: absolute;
+    top: -20px;
+    height: 40px;
+    width: 2px;
+    background-color: #555;
+    transform-origin: bottom;
+    border-radius: 100% 100% 0 0; /* Curving the antenna upwards */
+    background: linear-gradient(to bottom, #555 70%, #444);
+}
+
+.leftAntenna {
+    left: calc(40%);
+    height: 30px;
+    transform: rotate(-30deg);
+}
+
+.rightAntenna {
+    left: calc(30%);
+    height: 30px;
+    transform: rotate(15deg);
+}
+
+.antennaBall {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    background-color: #444;
+    background: radial-gradient(circle, #666, #333 60%, #111);
+}
+.left-wing,
+.right-wing {
+    width: 44px;
+    height: 42px;
+    position: absolute;
+    top: 20px;
+}
+
+.top,
+.bottom {
+    opacity: 0.7;
+    position: absolute;
+    border-radius: 12px; /* Making it rounder */
+}
+
+/* Top Wing Styling */
+.top {
+    width: 28px;  /* A bit wider than bottom */
+    height: 28px; /* Same as width to make it round */
+    top: 0;      /* Aligns to the top of the wing */
+}
+
+/* Bottom Wing Styling */
+.bottom {
+    top: 20px;  /* Positioned below the top wing */
+    width: 30px;
+    height: 30px;
+}
+
+/* Animations remain the same */
+
+.left-wing {
+    left: 10px;
+    transform-origin: 24px 50%;
+    transform: rotate3d(1, 0, 0, 20deg); /* Vertical flap */
+    animation: flutter-left 0.8s infinite;
+}
+
+.right-wing {
+    left: 14px;
+    transform-origin: 0px 50%;
+    transform: rotate3d(1, 0, 0, -20deg); /* Vertical flap */
+    animation: flutter-right 0.6s infinite;
+}
+
+@keyframes flutter-left {
+    0% {
+        transform: rotate3d(1, 0, 0, 20deg);
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, 70deg);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, 20deg);
+    }
+}
+  
+@keyframes flutter-right {
+    0% {
+        transform: rotate3d(1, 0, 0, -20deg);
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, -70deg);
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, -20deg);
+    }
+}
+
