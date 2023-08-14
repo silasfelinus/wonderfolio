@@ -1,4 +1,5 @@
 import "@styles/globals.css";
+
 import Nav from '../components/Nav';
 import Provider from '../components/Provider'
 
@@ -6,8 +7,7 @@ export const metadata = {
   title: "Kind Prompts",
   description: "Discover & Share AI Prompts",
 };
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
+const RootLayout = ({ children }) => (
     <html lang="en">
       <body>
         <Provider>
@@ -24,6 +24,5 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </body>
     </html>
   );
-};
 
 export default RootLayout;
