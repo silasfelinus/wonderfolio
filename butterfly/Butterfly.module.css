@@ -1,9 +1,21 @@
-.butterfly {
+.butterflyContainer {
     position: relative;
+    width: 100vw;     /* Full width of the viewport */
+    height: 100vh;    /* Full height of the viewport */
+    overflow: hidden; /* Just in case to prevent any overflow */
+}
+
+.butterfly {
+    position: absolute; /* This allows it to be positioned using top/left or translate */
     width: 100px;
     height: 100px;
     cursor: pointer;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 50%;
     animation: riseAndFall 0.8s infinite;
+    --primary-color: #FF5733; /* These are fallback values in case the inline styles aren't set */
+    --complementary-color: #33D4FF;
 }
 
 .body {
@@ -141,4 +153,36 @@
     50% {
         transform: scale(1.0); /* Peak size when wings are folded in */
     }
+}
+
+.leftWing, .rightWing {
+    background: linear-gradient(145deg, var(--primary-color) 20%, var(--complementary-color));
+    opacity: 0.85; /* Introducing a bit of transparency */
+}
+
+/* Introducing simple shapes (centered circle in this case) to the wings */
+.top::before, .bottom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background-color: black;
+    opacity: 0.6;
+    border-radius: 50%;
+}
+
+/* Pattern on the wings */
+.top::after, .bottom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+    border-radius: 50%;
 }
