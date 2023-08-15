@@ -26,8 +26,8 @@ const Nav = () => {
         <Image 
         src="/assets/images/logo.svg"
         alt="Kind Logo"
-        width={30}
-        height={30}
+        width={40}
+        height={40}
         className="object-contain"
         />
         <p className="logo_text">Kind Prompts</p>
@@ -47,7 +47,7 @@ const Nav = () => {
 
             <Link href="/profile">
               <Image 
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               height={37}
               width={37}
               className="rounded-full"
@@ -79,7 +79,7 @@ const Nav = () => {
           {session?.user ? (
             <div className="flex">
               <Image 
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               height={37}
               width={37}
               className="rounded-full"
