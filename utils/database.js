@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 let isConnected = false;
 
-export const ConnectToDB = async () => {
+export const connectToDB = async () => {
     mongoose.set('strictQuery', true);
 
     if(isConnnected) {
@@ -12,7 +12,7 @@ export const ConnectToDB = async () => {
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: 'sharePrompt',
+            dbName: 'share_prompt',
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
