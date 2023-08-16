@@ -1,4 +1,5 @@
 import Feed from "@components/Feed";
+import { Analytics } from '@vercel/analytics/react';
 
 const Home = () => (
   <section className='w-full flex-center flex-col'>
@@ -13,6 +14,7 @@ const Home = () => (
     </p>
 
     <Feed />
+    <Analytics />
   </section>
 );
 
