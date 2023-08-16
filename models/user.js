@@ -9,9 +9,24 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: [true, "Username is required!"],
-    match: [
-      /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
-      "Username invalid, it should contain 8-20 alphanumeric letters and be unique!",
+    validate: [
+      {
+        validator: (v) => /^(?=.{4,20}$)/.test(v),
+        message: "Username should be between 4 to 20 characters long!",
+      },
+      {
+        validator: (v) => /^(?!.*[_.]{2})/.test(v),
+        message: "Username should not have two consecutive `.` or `_`!",
+      },
+      {
+        validator: (v) => /^(?![_.]).*(?<![_.])$/.test(v),
+        message: "Username shouldn't start or end with a `_` or `.`!",
+      },
+      {
+        validator: (v) => !/\s/.test(v),
+        message: "Username shouldn't contain any spaces!",
+      },
+      // Additional validators can be added here if needed.
     ],
   },
   image: {
