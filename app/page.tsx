@@ -1,6 +1,4 @@
 import React from "react";
-import Butterfly from "@butterfly/Butterfly";
-import Butterfly2 from "@butterfly/Butt2";
 import Feed from "../components/Feed";
 
 const Home = () => (
